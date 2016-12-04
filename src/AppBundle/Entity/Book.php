@@ -9,7 +9,18 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * A book.
  *
- * @ApiResource(attributes={"filters"={"book.search", "book.range"}})
+ * @ApiResource(
+ *     attributes={
+ *         "filters"={"book.search", "book.range", "book.order"},
+ *         "pagination_items_per_page"=1
+ *     },
+ *     collectionOperations={
+ *         "get"={
+ *             "method"="GET",
+ *             "route_name"="book_special"
+ *          }
+ *     }
+ * )
  * @ORM\Entity
  */
 class Book

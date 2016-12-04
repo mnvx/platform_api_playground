@@ -10,10 +10,15 @@ services:
 
     book.search_filter:
         parent:    'api_platform.doctrine.orm.search_filter'
-        arguments: [ { isbn: 'partial', title: 'partial' } ]
+        arguments: [ { id: 'exact', isbn: 'partial', title: 'partial' } ]
         tags:      [ { name: 'api_platform.filter', id: 'book.search' } ]
 
     book.numeric_filter:
         parent:    'api_platform.doctrine.orm.range_filter'
         arguments: [ { id: ~ } ]
         tags:      [ { name: 'api_platform.filter', id: 'book.range' } ]
+
+    book.order_filter:
+        parent:    'api_platform.doctrine.orm.order_filter'
+        arguments: [ { id: ~ } ]
+        tags:      [ { name: 'api_platform.filter', id: 'book.order' } ]
